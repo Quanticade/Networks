@@ -1,49 +1,49 @@
 NET ID        | ARCH                              | SCHEDULE                           | ELO            |
 --------------|-----------------------------------|------------------------------------|----------------|
 net1          | (768hm->128pw)x2->(16->32->1)x8   | source: material-count             | 951+-200       |
-              | activ: screlu                     | dataset: 561 million               |                |
+              | activ: screlu                     | dataset unfiltered: 561 million    |                |
               | scale: 400                        | sb: 10                             |                |
               | quant: [255,128]                  | lr: cosine(0.001,0.000027)         |                |
               | optim: AdamW                      | wdl: constant(0.3)                 |                |
 --------------|-----------------------------------|------------------------------------|----------------|
 net2          | (768hm->128pw)x2->(16->32->1)x8   | source: net1                       | 46+-11         |
-              | activ: screlu                     | dataset: 240 million               |                |
+              | activ: screlu                     | dataset unfiltered: 240 million    |                |
               | scale: 400                        | sb: 400                            |                |
               | quant: [255,128]                  | lr: cosine(0.001,0.000027)         |                |
               | optim: AdamW                      | wdl: constant(0.3)                 |                |
 --------------|-----------------------------------|------------------------------------|----------------|
 net3          | (768hm->128pw)x2->(16->32->1)x8   | source: net2                       | 78+-14         |
-              | activ: screlu                     | dataset: 361 million               |                |
+              | activ: screlu                     | dataset unfiltered: 361 million    |                |
               | scale: 400                        | sb: 400                            |                |
               | quant: [255,128]                  | lr: cosine(0.001,0.000027)         |                |
               | optim: AdamW                      | wdl: constant(0.3)                 |                |
 --------------|-----------------------------------|------------------------------------|----------------|
 net4          | (768hm->256pw)x2->(16->32->1)x8   | source: net2                       | -200+-14       |
-              | activ: screlu                     | dataset: 361 million               |                |
+              | activ: screlu                     | dataset unfiltered: 361 million    |                |
               | scale: 400                        | sb: 400                            |                |
               | quant: [255,128]                  | lr: cosine(0.001,0.000027)         |                |
               | optim: AdamW                      | wdl: constant(0.3)                 |                |
 --------------|-----------------------------------|------------------------------------|----------------|
 net5          | (768hm->128pw)x2->(16->32->1)x8   | source: net3                       | 53+-11         |
-              | activ: screlu                     | dataset: 890 million               |                |
+              | activ: screlu                     | dataset unfiltered: 890 million    |                |
               | scale: 400                        | sb: 400                            |                |
               | quant: [255,128]                  | lr: cosine(0.001,0.000027)         |                |
               | optim: AdamW                      | wdl: constant(0.3)                 |                |
 --------------|-----------------------------------|------------------------------------|----------------|
 net6          | (768hm->128pw)x2->(16->32->1)x8   | source: net3                       | 28+-7          |
-              | activ: screlu                     | dataset: 890 million               |                |
+              | activ: screlu                     | dataset unfiltered: 890 million    |                |
               | scale: 400                        | sb: 400                            |                |
               | quant: [255,128]                  | lr: cosine(0.001,0.0000081)        |                |
               | optim: AdamW                      | wdl: constant(0.3)                 |                |
 --------------|-----------------------------------|------------------------------------|----------------|
 net7          | (768hm->256pw)x2->(16->32->1)x8   | source: net3                       | 67+-13         |
-              | activ: screlu                     | dataset: 890 million               |                |
+              | activ: screlu                     | dataset unfiltered: 890 million    |                |
               | scale: 400                        | sb: 400                            |                |
               | quant: [255,128]                  | lr: cosine(0.001,0.0000081)        |                |
               | optim: AdamW                      | wdl: constant(0.3)                 |                |
 --------------|-----------------------------------|------------------------------------|----------------|
 net8          | (768hm->256pw)x2->(16->32->1)x8   | source: net3                       | ~-10           |
-              | activ: screlu                     | dataset: 890 million               |                |
+              | activ: screlu                     | dataset unfiltered: 890 million    |                |
               | scale: 400                        | sb: 400                            |                |
               | quant: [255,128]                  | lr: cosine(0.001,0.00000243)       |                |
               | optim: AdamW                      | wdl: constant(0.3)                 |                |
