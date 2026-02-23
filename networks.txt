@@ -121,10 +121,40 @@ net20         | (768hm->1024pw)x2->(16->32->1)x8  | source: net14               
               | quant: [255,128]                  | lr: cosine(0.001,0.0000081)        |                |
               | optim: AdamW    buckets: 4        | wdl: constant(0.7)                 |                |
 --------------|-----------------------------------|------------------------------------|----------------|
-net18         | (768hm->1024pw)x2->(16->32->1)x8  | source: net14                      | -50            |
+net21         | (768hm->1024pw)x2->(16->32->1)x8  | source: net14                      | -50            |
               | activ: screlu                     | dataset unfiltered: 830 million    |                |
               | scale: 400                        | sb: 400                            |                |
               | quant: [255,128]                  | lr: cosine(0.001,0.0000081)        |                |
               | optim: AdamW                      | wdl: constant(0.7)                 |                |
+--------------|-----------------------------------|------------------------------------|----------------|
+net22         | (768hm->1024pw)x2->(16->32->1)x8  | source: net14                      | -74            |
+              | activ: screlu                     | dataset unfiltered: 830 million    |                |
+              | scale: 400                        | sb: 400                            |                |
+              | quant: [255,128]                  | lr: cosine(0.001,0.0000081)        |                |
+              | optim: AdamW                      | wdl: constant(0.7)                 | castling filt  |
+--------------|-----------------------------------|------------------------------------|----------------|
+net23         | (768hm->1024pw)x2->(16->32->1)x8  | source: net14                      | -63            |
+              | activ: screlu                     | dataset unfiltered: 3.1 billion    |                |
+              | scale: 400                        | sb: 400                            |                |
+              | quant: [255,128]                  | lr: cosine(0.001,0.0000081)        |                |
+              | optim: AdamW                      | wdl: constant(0.7)                 |                |
+--------------|-----------------------------------|------------------------------------|----------------|
+net24         | (768hm->1024pw)x2->(16->32->1)x8  | source: net14                      | 6              |
+              | activ: screlu                     | dataset unfiltered: 3.1 billion    |                |
+              | scale: 400                        | sb: 600                            |                |
+              | quant: [255,128]                  | lr: cosine(0.001,0.0000081)        |                |
+              | optim: AdamW                      | wdl: constant(0.7)                 |                |
+--------------|-----------------------------------|------------------------------------|----------------|
+net25         | (768hmx4->1024pw)x2->(16->32->1)x8| source: net14                      | 51             |
+              | activ: screlu                     | dataset unfiltered: 3.1 billion    |                |
+              | scale: 400                        | sb: 600                            |                |
+              | quant: [255,128]                  | lr: cosine(0.001,0.0000081)        |                |
+              | optim: AdamW                      | wdl: constant(0.7)                 |                |
+--------------|-----------------------------------|------------------------------------|----------------|
+net26         | (768hmx4->1024pw)x2->(16->32->1)x8| source: net14                      | 8              |
+              | activ: screlu                     | dataset unfiltered: 3.1 billion    |                |
+              | scale: 400                        | sb: 600                            |                |
+              | quant: [255,128]                  | lr: cosine(0.001,0.0000081)        |                |
+              | optim: AdamW                      | wdl: constant(0.7)                 | Dual Act       |
 --------------|-----------------------------------|------------------------------------|----------------|
 
