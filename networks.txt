@@ -211,11 +211,59 @@ net34         | (768hmx8->1536pw)x2->(16->32->1)x8| source: net26+net29         
               | optim: AdamW                      | wdl: 400 linear(0.25->0.75)        |                |
               |                                   | wdl: 600 constant(0.8)             |                |
 --------------|-----------------------------------|------------------------------------|----------------|
-net35         | (768hmx8->1536pw)x2->(16->32->1)x8| source: net26+net29                | -26           |
+net35         | (768hmx8->1536pw)x2->(16->32->1)x8| source: net26+net29                | -26            |
               | activ: screlu                     | dataset unfiltered: 5.5 billion    |                |
               | scale: 400                        | sb: 600                            |                |
               | quant: [255,128]                  | lr: 400 cosine(0.001,0.0000081)    |                |
               |                                   | lr: 600 cosine(0.0001,0.000000405) | dont filter    |
               | optim: AdamW                      | wdl: 400 linear(0.25->0.75)        | castling       |
               |                                   | wdl: 600 constant(0.8)             |                |
+--------------|-----------------------------------|------------------------------------|----------------|
+net36         | (768hmx8->1536pw)x2->(16->32->1)x8| source: net26+net29+net34          | 12             |
+              | activ: screlu                     | dataset unfiltered: 6.5 billion    |                |
+              | scale: 400                        | sb: 600                            |                |
+              | quant: [255,128]                  | lr: 400 cosine(0.001,0.0000081)    |                |
+              |                                   | lr: 600 cosine(0.0001,0.000000405) |                |
+              | optim: AdamW                      | wdl: 400 linear(0.25->0.75)        |                |
+              |                                   | wdl: 600 constant(0.8)             |                |
+--------------|-----------------------------------|------------------------------------|----------------|
+net37         | (768hmx8->1536pw)x2->(16->32->1)x8| source: net26+net29+net34          | 14             |
+              | activ: screlu                     | dataset unfiltered: 6.5 billion    |                |
+              | scale: 400                        | sb: 600                            |                |
+              | quant: [255,128]                  | lr: 400 cosine(0.001,0.0000081)    |                |
+              |                                   | lr: 600 cosine(0.0001,0.000000405) |                |
+              | optim: AdamW                      | wdl: 400 linear(0.25->0.75)        |                |
+              |                                   | wdl: 600 constant(0.9)             |                |
+--------------|-----------------------------------|------------------------------------|----------------|
+net38         | (768hmx8->1536pw)x2->(16->32->1)x8| source: net26+net29+net34          | 9              |
+              | activ: screlu                     | dataset unfiltered: 6.5 billion    |                |
+              | scale: 400                        | sb: 600                            |                |
+              | quant: [255,128]                  | lr: 400 cosine(0.001,0.0000081)    |                |
+              |                                   | lr: 600 cosine(0.0001,0.000000405) |                |
+              | optim: AdamW                      | wdl: 400 linear(0.25->0.75)        |                |
+              |                                   | wdl: 600 constant(1.0)             |                |
+--------------|-----------------------------------|------------------------------------|----------------|
+net39         | (768hmx8->1536pw)x2->(16->32->1)x8| source: net26+net29+net34+net38    | 15             |
+              | activ: screlu                     | dataset unfiltered: 8.8 billion    |                |
+              | scale: 400                        | sb: 600                            |                |
+              | quant: [255,128]                  | lr: 400 cosine(0.001,0.0000081)    |                |
+              |                                   | lr: 600 cosine(0.0001,0.000000405) |                |
+              | optim: AdamW                      | wdl: 400 linear(0.25->0.75)        |                |
+              |                                   | wdl: 600 constant(1.0)             |                |
+--------------|-----------------------------------|------------------------------------|----------------|
+net40         | (768hmx8->1536pw)x2->(16->32->1)x8| source: net26+net29+net34+net38    | -3             |
+              | activ: screlu                     | dataset unfiltered: 8.8 billion    |                |
+              | scale: 400                        | sb: 600                            |                |
+              | quant: [255,128]                  | lr: 400 cosine(0.001,0.0000081)    |                |
+              |                                   | lr: 600 cosine(0.0001,0.000000405) | shuffled data  |
+              | optim: AdamW                      | wdl: 400 linear(0.25->0.75)        | needs old data |
+              |                                   | wdl: 600 constant(1.0)             | regen          |
+--------------|-----------------------------------|------------------------------------|----------------|
+net41         | (768hmx8->2048pw)x2->(16->32->1)x8| source: net26+net29+net34+net38    | X              |
+              | activ: screlu                     | dataset unfiltered: 8.8 billion    |                |
+              | scale: 400                        | sb: 600                            |                |
+              | quant: [255,128]                  | lr: 400 cosine(0.001,0.0000081)    |                |
+              |                                   | lr: 600 cosine(0.0001,0.000000405) |                |
+              | optim: AdamW                      | wdl: 400 linear(0.25->0.75)        |                |
+              |                                   | wdl: 600 constant(1.0)             |                |
 --------------|-----------------------------------|------------------------------------|----------------|
